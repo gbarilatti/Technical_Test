@@ -35,5 +35,5 @@ public class CandidateByTechnology {
     @ManyToOne
     private Technology technology;
 
-    private long experienceYear;
+    private long experienceYears;
 }

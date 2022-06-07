@@ -25,11 +25,11 @@ public class TechnologyServiceImp implements TechnologyService {
 
     @Override
     public Boolean create(TechnologyDto technologyDto) throws TechnologyAlreadyExistsException {
-        return uploadCandidate(technologyDto);
+        return uploadTechnology(technologyDto);
     }
 
     @Override
-    public Boolean uploadCandidate(TechnologyDto technologyDto) throws TechnologyAlreadyExistsException {
+    public Boolean uploadTechnology(TechnologyDto technologyDto) throws TechnologyAlreadyExistsException {
 
         if (technologyRepository.findByNameAndVersion(technologyDto.getName(), technologyDto.getVersion()) != null) {
             throw new TechnologyAlreadyExistsException("Technology " + technologyDto.getName()

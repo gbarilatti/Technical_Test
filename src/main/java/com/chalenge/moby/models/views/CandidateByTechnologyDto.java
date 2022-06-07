@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CandidateByTechnologyDto {
-    private String name;
-    private Integer score;
+    private String candidateName;
+    private String candidateLastName;
+    private long experienceYears;
 }

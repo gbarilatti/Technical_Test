@@ -12,7 +12,7 @@ public interface TechnologyService {
 
     Boolean create(TechnologyDto technologyDto);
 
-    Boolean uploadCandidate(TechnologyDto technologyDto);
+    Boolean uploadTechnology(TechnologyDto technologyDto);
 
     Boolean deleteById(Long technologyId);
 

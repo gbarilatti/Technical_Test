@@ -2,6 +2,7 @@ package com.chalenge.moby.controllers;
 
 import com.chalenge.moby.models.entities.CandidateByTechnology;
 import com.chalenge.moby.models.entities.Technology;
+import com.chalenge.moby.models.views.CandidateByTechnologyDto;
 import com.chalenge.moby.models.views.CandidateDto;
 import com.chalenge.moby.models.views.TechnologyDto;
 import com.chalenge.moby.services.CandidateByTechnologyService;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/candidateByTechnology")
+@RequestMapping(value = "api/candidateByTechnology")
 public class CandidateByTechnologyController {
 
     @Autowired
@@ -38,6 +39,11 @@ public class CandidateByTechnologyController {
 
     @GetMapping(value = "/{candidateByTechnologyId}")
     public ResponseEntity<CandidateByTechnology> findById(@PathVariable Long candidateByTechnologyId){
-        return new ResponseEntity<>(candidateByTechnologyService);
+        return new ResponseEntity<>(candidateByTechnologyService.findById(candidateByTechnologyId),HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{technologyName}")
+    public ResponseEntity<List<CandidateByTechnologyDto>> findByTechnologyName(@PathVariable String technologyName){
+        return new ResponseEntity<>(candidateByTechnologyService.findCandidateByTechnologyName(technologyName),HttpStatus.OK);
     }
 }
