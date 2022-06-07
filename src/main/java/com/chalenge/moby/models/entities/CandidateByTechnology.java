@@ -17,12 +17,12 @@ import javax.persistence.Table;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tecnology_x_candidate")
-public class TechnologyByCandidate {
+@Table(name = "candidate_x_technology")
+public class CandidateByTechnology {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tecnology_x_candidate_id")
+    @Column(name = "candidate_x_technology_id")
     private Long id;
 
     @JoinColumn(name = "candidate_id", referencedColumnName = "candidate_id")

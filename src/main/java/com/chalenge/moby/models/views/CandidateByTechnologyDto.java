@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TechnologyByCandidateDto {
+public class CandidateByTechnologyDto {
     private String name;
     private Integer score;
 }
