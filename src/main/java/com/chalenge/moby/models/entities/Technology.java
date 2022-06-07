@@ -21,7 +21,7 @@ import java.io.Serializable;
 public class Technology implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "technology_id")
     private long id;
 

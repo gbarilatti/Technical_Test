@@ -1,8 +1,10 @@
 package com.chalenge.moby.models.entities;
 
 import com.chalenge.moby.models.enums.DocumentType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -15,6 +17,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +25,7 @@ import java.time.LocalDate;
 public class Candidate implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_id")
     private long id;
 
@@ -34,5 +37,6 @@ public class Candidate implements Serializable {
 
     private String document;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "es-Arg", timezone = "America/Buenos Aires")
     private LocalDate birthday;
 }
