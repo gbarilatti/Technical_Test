@@ -1,7 +1,6 @@
 package com.chalenge.moby.controllers;
 
 import com.chalenge.moby.models.entities.Technology;
-import com.chalenge.moby.models.views.CandidateDto;
 import com.chalenge.moby.models.views.TechnologyDto;
 import com.chalenge.moby.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class TechnologyController {
     @Autowired
     TechnologyService technologyService;
 
-    @RequestMapping(value = "/")
+    @GetMapping(value = "/")
     public ResponseEntity<List<Technology>> findAll() {
         return new ResponseEntity<>(technologyService.findAll(), HttpStatus.OK);
     }

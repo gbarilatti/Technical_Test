@@ -8,5 +8,7 @@ public class Query {
 
     public static final String FIND_BY_CANDIDATEID_AND_TECHNOLOGYID = "SELECT * FROM CANDIDATE_X_TECHNOLOGY CXT WHERE CXT.candidate_id = ?1 AND CXT.technology_id = ?2";
 
-    public static final String FIND_CANDIDATE_BY_TECHNOLOGYNAME = "SELECT * FROM CANDIDATE_X_TECHNOLOGY CXT INNER JOIN TECHNOLOGIES T ON CXT.technology_id = T.technology_id WHERE T.name = ?1";
+    public static final String FIND_CANDIDATE_BY_TECHNOLOGYNAME = "SELECT C.name, C.lastname, C.documentType ,C.document, C.birthday, t.name, t.version, CXT.experienceYears " +
+                                                                  "FROM CANDIDATES c INNER JOIN CANDIDATE_X_TECHNOLOGY CXT  ON C.candidate_id=CXT.candidate_id " +
+                                                                  "INNER JOIN TECHNOLOGIES T ON CXT.technology_id=T.technology_id WHERE T.name LIKE ?1";
 }

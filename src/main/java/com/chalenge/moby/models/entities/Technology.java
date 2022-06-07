@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class Technology implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "technology_id")
-    private long id;
+    private Long id;
 
     private String name;
 

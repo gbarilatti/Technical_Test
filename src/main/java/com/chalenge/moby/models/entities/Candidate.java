@@ -27,7 +27,7 @@ public class Candidate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_id")
-    private long id;
+    private Long id;
 
     private String name;
 
