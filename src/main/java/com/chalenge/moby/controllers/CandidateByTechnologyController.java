@@ -5,6 +5,7 @@ import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
 import com.chalenge.moby.models.views.CandidateDto;
 import com.chalenge.moby.models.views.TechnologyDto;
+import com.chalenge.moby.projections.CandidateByTechnologyProjection;
 import com.chalenge.moby.services.CandidateByTechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,8 @@ public class CandidateByTechnologyController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<HttpStatus> create(@RequestBody CandidateDto candidateDto, @RequestBody TechnologyDto technologyDto){
-        candidateByTechnologyService.create(candidateDto, technologyDto);
+    public ResponseEntity<HttpStatus> create(@RequestBody CandidateByTechnologyDto candidateByTechnologyDto){
+        candidateByTechnologyService.create(candidateByTechnologyDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -42,8 +43,8 @@ public class CandidateByTechnologyController {
         return new ResponseEntity<>(candidateByTechnologyService.findById(candidateByTechnologyId),HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{technologyName}")
-    public ResponseEntity<List<CandidateByTechnologyDto>> findByTechnologyName(@PathVariable String technologyName){
-        return new ResponseEntity<>(candidateByTechnologyService.findCandidateByTechnologyName(technologyName),HttpStatus.OK);
+    @GetMapping(value = "/candidateByTechnologyName/{technologyName}")
+    public ResponseEntity<List<CandidateByTechnologyProjection>> findByTechnologyName(@PathVariable String technologyName){
+        return new ResponseEntity<>(candidateByTechnologyService.findByTechnologyName(technologyName),HttpStatus.OK);
     }
 }

@@ -26,7 +26,10 @@ public class Technology implements Serializable {
     @Column(name = "technology_id")
     private Long id;
 
+    @Column(name = "technology_name")
     private String name;
 
     private String version;
+
+
 }

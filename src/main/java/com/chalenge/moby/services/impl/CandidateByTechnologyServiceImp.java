@@ -6,14 +6,12 @@ import com.chalenge.moby.models.entities.Candidate;
 import com.chalenge.moby.models.entities.CandidateByTechnology;
 import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
-import com.chalenge.moby.models.views.CandidateDto;
-import com.chalenge.moby.models.views.TechnologyDto;
+import com.chalenge.moby.projections.CandidateByTechnologyProjection;
 import com.chalenge.moby.repositories.CandidateByTechnologyRepository;
 import com.chalenge.moby.services.CandidateByTechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,33 +21,39 @@ public class CandidateByTechnologyServiceImp implements CandidateByTechnologySer
     @Autowired
     private CandidateByTechnologyRepository candidateByTechnologyRepository;
 
+    @Override
     public List<CandidateByTechnology> findAll() {
         return candidateByTechnologyRepository.findAll();
     }
 
-    public void create(CandidateDto candidateDto, TechnologyDto technologyDto) {
-        uploadCandidateByTechnology(candidateDto, technologyDto);
+    @Override
+    public void create(CandidateByTechnologyDto candidateByTechnologyDto) {
+        uploadCandidateByTechnology(candidateByTechnologyDto);
     }
 
-    public void uploadCandidateByTechnology(CandidateDto candidateDto, TechnologyDto technologyDto) {
-        if (candidateByTechnologyRepository.findByCandidateIdAndTechnologyId(candidateDto.getId(), technologyDto.getId()) == null) {
+    @Override
+    public void uploadCandidateByTechnology(CandidateByTechnologyDto candidateByTechnologyDto) {
+        if (candidateByTechnologyRepository.findByCandidateIdAndTechnologyId(candidateByTechnologyDto.getCandidate().getId(), candidateByTechnologyDto.getTechnology().getId()) != null) {
             throw new CandidateAlreadyExistsException("Already exists");
         } else {
             Candidate candidate = Candidate.builder()
-                    .name(candidateDto.getName())
-                    .lastName(candidateDto.getLastName())
-                    .documentType(candidateDto.getDocumentType())
-                    .document(candidateDto.getDocument())
-                    .birthday(candidateDto.getBirthday())
+                    .id(candidateByTechnologyDto.getCandidate().getId())
+                    .name(candidateByTechnologyDto.getCandidate().getName())
+                    .lastName(candidateByTechnologyDto.getCandidate().getLastName())
+                    .documentType(candidateByTechnologyDto.getCandidate().getDocumentType())
+                    .document(candidateByTechnologyDto.getCandidate().getDocument())
+                    .birthday(candidateByTechnologyDto.getCandidate().getBirthday())
                     .build();
             Technology technology = Technology.builder()
-                    .name(technologyDto.getName())
-                    .version(technologyDto.getVersion())
+                    .id(candidateByTechnologyDto.getTechnology().getId())
+                    .name(candidateByTechnologyDto.getTechnology().getName())
+                    .version(candidateByTechnologyDto.getTechnology().getVersion())
                     .build();
             candidateByTechnologyRepository.save(
                     CandidateByTechnology.builder()
                             .candidate(candidate)
                             .technology(technology)
+                            .experienceYears(candidateByTechnologyDto.getExperienceYears())
                             .build()
             );
         }
@@ -59,24 +63,15 @@ public class CandidateByTechnologyServiceImp implements CandidateByTechnologySer
         CandidateByTechnology candidateByTechnology;
         Optional<CandidateByTechnology> candidateByTechnologyOpt = candidateByTechnologyRepository.findById(candidateByTechnologyId);
         if (candidateByTechnologyOpt.isPresent()) {
-            candidateByTechnology = candidateByTechnologyOpt.get();
+             candidateByTechnology = candidateByTechnologyOpt.get();
         } else {
             throw new TechnologyNotFoundException("Not exists this candidateByTechnology ");
         }
         return candidateByTechnology;
     }
 
-    public List<CandidateByTechnologyDto> findCandidateByTechnologyName(String name){
-        List<CandidateByTechnology> candidateByTechnologies = candidateByTechnologyRepository.findCandidatesByTechnologyName(name);
-        List<CandidateByTechnologyDto> candidateByTechnologyDtoList = new ArrayList<>();
-        candidateByTechnologies.forEach(candidateByTechnology -> {
-            CandidateByTechnologyDto candidateByTechnologyDto = CandidateByTechnologyDto.builder()
-                    .candidateName(candidateByTechnology.getCandidate().getName())
-                    .experienceYears(candidateByTechnology.getExperienceYears())
-                    .build();
-            candidateByTechnologyDtoList.add(candidateByTechnologyDto);
-        });
-        return candidateByTechnologyDtoList;
+    public List<CandidateByTechnologyProjection> findByTechnologyName(String technologyName) {
+        return candidateByTechnologyRepository.findByTechnologyName(technologyName);
     }
 
 }

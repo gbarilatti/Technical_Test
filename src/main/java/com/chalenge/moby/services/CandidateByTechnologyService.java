@@ -2,18 +2,18 @@ package com.chalenge.moby.services;
 
 import com.chalenge.moby.models.entities.CandidateByTechnology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
-import com.chalenge.moby.models.views.CandidateDto;
-import com.chalenge.moby.models.views.TechnologyDto;
+import com.chalenge.moby.projections.CandidateByTechnologyProjection;
 
 import java.util.List;
 
 public interface CandidateByTechnologyService {
     List<CandidateByTechnology> findAll();
 
-    void create(CandidateDto candidateDto, TechnologyDto technologyDto);
+    void create(CandidateByTechnologyDto candidateByTechnologyDto);
 
+    void uploadCandidateByTechnology(CandidateByTechnologyDto candidateByTechnologyDto);
     CandidateByTechnology findById(Long candidateByTechnologyId);
 
-    List<CandidateByTechnologyDto> findCandidateByTechnologyName(String name);
+    List<CandidateByTechnologyProjection> findByTechnologyName(String technologyName);
 
 }

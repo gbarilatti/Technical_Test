@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,5 +37,6 @@ public class CandidateByTechnology {
     @ManyToOne
     private Technology technology;
 
+    @Column(name = "experience_years")
     private long experienceYears;
 }

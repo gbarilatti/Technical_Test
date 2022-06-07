@@ -10,6 +10,7 @@ import com.chalenge.moby.services.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -24,6 +25,7 @@ public class CandidateServiceImp implements CandidateService {
     }
 
     @Override
+    @Transactional
     public Boolean create(CandidateDto candidateDto) throws CandidateAlreadyExistsException {
         return uploadCandidate(candidateDto);
     }
@@ -47,6 +49,7 @@ public class CandidateServiceImp implements CandidateService {
     }
 
     @Override
+    @Transactional
     public Boolean deleteById(long id) {
         if (candidateRepository.findById(id).isPresent()) {
             candidateRepository.deleteById(id);

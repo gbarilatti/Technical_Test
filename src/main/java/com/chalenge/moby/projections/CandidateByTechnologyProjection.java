@@ -6,17 +6,17 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public interface CandidateByTechnologyProjection {
-    @Value("#{target.name}")
+    @Value("#{target.candidate_name}")
     String getName();
 
-    @Value("#{target.name}")
+    @Value("#{target.candidate_name}")
     String setName(String name);
 
 
-    @Value("#{target.lastname}")
+    @Value("#{target.last_name}")
     String getLastname();
 
-    @Value("#{target.lastName}")
+    @Value("#{target.last_name}")
     void setLastname(String lastName);
 
 
@@ -27,18 +27,18 @@ public interface CandidateByTechnologyProjection {
     void setDocument(Long document);
 
 
-    @Value("#{target.birthdate}")
+    @Value("#{target.birthday}")
     Date getBirthdate();
 
-    @Value("#{target.birthdate}")
+    @Value("#{target.birthday}")
     void setBirthdate(LocalDate birthday);
 
 
-    @Value("#{target.description}")
+    @Value("#{target.technology_name}")
     String getDescription();
 
-    @Value("#{target.description}")
-    void setDescription(String description);
+    @Value("#{target.technology_name}")
+    void setDescription(String technologyName);
 
 
     @Value("#{target.version}")
@@ -48,9 +48,9 @@ public interface CandidateByTechnologyProjection {
     String getVersion();
 
 
-    @Value("#{target.years_experience}")
+    @Value("#{target.experience_years}")
     void setExperienceYears(Integer experienceYears);
 
-    @Value("#{target.experienceYears}")
+    @Value("#{target.experience_years}")
     Integer getExperienceYears();
 }

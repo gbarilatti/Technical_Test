@@ -29,10 +29,13 @@ public class Candidate implements Serializable {
     @Column(name = "candidate_id")
     private Long id;
 
+    @Column(name = "candidate_name")
     private String name;
 
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "document_type")
     private DocumentType documentType;
 
     private String document;
