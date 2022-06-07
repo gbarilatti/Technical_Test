@@ -19,6 +19,8 @@ import java.util.List;
 @ToString
 public class CandidateDto {
 
+    private long id;
+
     private String name;
 
     private String lastName;
