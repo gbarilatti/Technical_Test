@@ -2,7 +2,7 @@ package com.chalenge.moby.controllers;
 
 import com.chalenge.moby.models.entities.Candidate;
 import com.chalenge.moby.models.views.CandidateDto;
-import com.chalenge.moby.services.CandidateService;
+import com.chalenge.moby.services.imp.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +34,9 @@ public class CandidateController {
     }
 
     @DeleteMapping(value = "/delete/{candidateId}")
-    public ResponseEntity<Boolean> deleteById(@PathVariable Long candidateId) {
-        return new ResponseEntity<>(candidateService.deleteById(candidateId), HttpStatus.OK);
+    public ResponseEntity<HttpStatus> deleteById(@PathVariable Long candidateId) {
+        candidateService.deleteById(candidateId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/findByDocument/{candidateDocument}")

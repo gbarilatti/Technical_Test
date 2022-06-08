@@ -1,4 +1,4 @@
-package com.chalenge.moby.services.impl;
+package com.chalenge.moby.services.imp.imp;
 
 import com.chalenge.moby.exceptions.CandidateAlreadyExistsException;
 import com.chalenge.moby.exceptions.TechnologyNotFoundException;
@@ -8,7 +8,7 @@ import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
 import com.chalenge.moby.projections.CandidateByTechnologyProjection;
 import com.chalenge.moby.repositories.CandidateByTechnologyRepository;
-import com.chalenge.moby.services.CandidateByTechnologyService;
+import com.chalenge.moby.services.imp.CandidateByTechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

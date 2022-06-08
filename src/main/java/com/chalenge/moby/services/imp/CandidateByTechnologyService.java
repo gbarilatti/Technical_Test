@@ -1,4 +1,4 @@
-package com.chalenge.moby.services;
+package com.chalenge.moby.services.imp;
 
 import com.chalenge.moby.models.entities.CandidateByTechnology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;

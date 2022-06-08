@@ -3,7 +3,7 @@ package com.chalenge.moby.controllers;
 import com.chalenge.moby.models.entities.CandidateByTechnology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
 import com.chalenge.moby.projections.CandidateByTechnologyProjection;
-import com.chalenge.moby.services.CandidateByTechnologyService;
+import com.chalenge.moby.services.imp.CandidateByTechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

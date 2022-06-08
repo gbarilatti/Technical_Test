@@ -1,12 +1,11 @@
-package com.chalenge.moby.services.impl;
+package com.chalenge.moby.services.imp.imp;
 
 import com.chalenge.moby.exceptions.CandidateAlreadyExistsException;
 import com.chalenge.moby.exceptions.CandidateNotExistsException;
 import com.chalenge.moby.models.entities.Candidate;
-import com.chalenge.moby.models.enums.DocumentType;
 import com.chalenge.moby.models.views.CandidateDto;
 import com.chalenge.moby.repositories.CandidateRepository;
-import com.chalenge.moby.services.CandidateService;
+import com.chalenge.moby.services.imp.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,13 +49,13 @@ public class CandidateServiceImp implements CandidateService {
 
     @Override
     @Transactional
-    public Boolean deleteById(long id) {
+    public void deleteById(long id) {
         if (candidateRepository.findById(id).isPresent()) {
             candidateRepository.deleteById(id);
         } else {
             throw new CandidateNotExistsException("Candidate " + id + " doesn't exists");
         }
-        return true;
+
     }
 
     public Candidate findByDocument(String candidateDocument) {

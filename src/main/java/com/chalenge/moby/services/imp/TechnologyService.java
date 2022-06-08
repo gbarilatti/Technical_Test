@@ -1,7 +1,6 @@
-package com.chalenge.moby.services;
+package com.chalenge.moby.services.imp;
 
 import com.chalenge.moby.models.entities.Technology;
-import com.chalenge.moby.models.views.CandidateDto;
 import com.chalenge.moby.models.views.TechnologyDto;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface TechnologyService {
 
     Boolean uploadTechnology(TechnologyDto technologyDto);
 
-    Boolean deleteById(Long technologyId);
+    void deleteById(Long technologyId);
 
     Technology findById(Long technologyId);
 

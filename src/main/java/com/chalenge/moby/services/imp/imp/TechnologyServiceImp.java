@@ -1,11 +1,11 @@
-package com.chalenge.moby.services.impl;
+package com.chalenge.moby.services.imp.imp;
 
 import com.chalenge.moby.exceptions.TechnologyAlreadyExistsException;
 import com.chalenge.moby.exceptions.TechnologyNotFoundException;
 import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.TechnologyDto;
 import com.chalenge.moby.repositories.TechnologyRepository;
-import com.chalenge.moby.services.TechnologyService;
+import com.chalenge.moby.services.imp.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,13 +48,12 @@ public class TechnologyServiceImp implements TechnologyService {
 
     @Override
     @Transactional
-    public Boolean deleteById(Long technologyId) {
+    public void deleteById(Long technologyId) {
         if (technologyRepository.findById(technologyId).isPresent()) {
             technologyRepository.deleteById(technologyId);
         } else {
             throw new TechnologyNotFoundException("Not found technology " + technologyId);
         }
-        return true;
     }
 
     @Override

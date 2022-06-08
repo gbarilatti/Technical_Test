@@ -1,4 +1,4 @@
-package com.chalenge.moby.services;
+package com.chalenge.moby.services.imp;
 
 import com.chalenge.moby.models.entities.Candidate;
 import com.chalenge.moby.models.enums.DocumentType;
@@ -14,7 +14,7 @@ public interface CandidateService {
 
     Boolean uploadCandidate(CandidateDto candidateDto);
 
-    Boolean deleteById(long id);
+    void deleteById(long id);
 
     Candidate findByDocument(String candidateDocument);
 }
