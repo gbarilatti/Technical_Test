@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
@@ -60,15 +61,11 @@ class CandidateControllerTest extends AbstractMVCTest {
 
     @Test
     void deleteByIdTest() throws Exception{
-        Candidate candidate = getCandidate();
-        when(candidateRepository.findById(candidate.getId())).thenReturn(Optional.of(candidate));
-        mockMvc.perform(delete("/api/candidate/delete/{candidateId}", candidate.getId()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        mockMvc.perform(delete("/api/candidate/delete/{candidateId}", getCandidate().getId()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isAccepted());
     }
 
     @Test
     void findByDocument() throws Exception {
-        Candidate candidate = getCandidate();
-        when(candidateService.findByDocument(candidate.getDocument())).thenReturn(candidate);
-        mockMvc.perform(get("/api/candidate/findByDocument/{candidateDocument",candidate.getDocument())).andExpect(status().isOk());
+        mockMvc.perform(get("/api/candidate/findByDocument/{candidateDocument}",getCandidate().getDocument())).andExpect(MockMvcResultMatchers.status().isOk());
     }
 }

@@ -31,7 +31,6 @@ public class CandidateByTechnologyController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Boolean> create(@RequestBody CandidateByTechnologyDto candidateByTechnologyDto) {
-
         return new ResponseEntity<>(candidateByTechnologyService.create(candidateByTechnologyDto), HttpStatus.CREATED);
     }
 

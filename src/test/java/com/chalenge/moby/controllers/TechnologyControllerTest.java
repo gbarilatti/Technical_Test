@@ -47,7 +47,6 @@ class TechnologyControllerTest extends AbstractMVCTest {
         when(technologyService.create(technologyDto)).thenReturn(true);
         String technologyDtoJson = new Gson().toJson(technologyDto);
         mockMvc.perform(post("/api/technology/create").contentType(MediaType.APPLICATION_JSON).content(technologyDtoJson)).andExpect(MockMvcResultMatchers.status().isCreated());
-
     }
 
     @Test
