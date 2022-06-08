@@ -11,4 +11,8 @@ public class Query {
     public static final String FIND_CANDIDATE_BY_TECHNOLOGY_NAME = "SELECT C.candidate_name, C.last_name, C.document_type ,C.document, C.birthday, T.technology_name, T.version, CXT.experience_years " +
                                                                   "FROM CANDIDATES C INNER JOIN CANDIDATE_X_TECHNOLOGY CXT  ON C.candidate_id=CXT.candidate_id " +
                                                                   "INNER JOIN TECHNOLOGIES T ON CXT.technology_id=T.technology_id WHERE T.technology_name LIKE ?1";
+
+    public static final String FIND_CANDIDATE_BY_TECHNOLOGY_NAME_AND_VERSION = "SELECT C.candidate_name, C.last_name, C.document_type ,C.document, C.birthday, T.technology_name, T.version, CXT.experience_years " +
+            "FROM CANDIDATES C INNER JOIN CANDIDATE_X_TECHNOLOGY CXT  ON C.candidate_id=CXT.candidate_id " +
+            "INNER JOIN TECHNOLOGIES T ON CXT.technology_id=T.technology_id WHERE T.technology_name LIKE ?1 AND T.version LIKE ?2";
 }

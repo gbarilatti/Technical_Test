@@ -59,6 +59,7 @@ public class CandidateByTechnologyServiceImp implements CandidateByTechnologySer
         }
     }
 
+    @Override
     public CandidateByTechnology findById(Long candidateByTechnologyId) {
         CandidateByTechnology candidateByTechnology;
         Optional<CandidateByTechnology> candidateByTechnologyOpt = candidateByTechnologyRepository.findById(candidateByTechnologyId);
@@ -70,8 +71,15 @@ public class CandidateByTechnologyServiceImp implements CandidateByTechnologySer
         return candidateByTechnology;
     }
 
+    @Override
     public List<CandidateByTechnologyProjection> findByTechnologyName(String technologyName) {
         return candidateByTechnologyRepository.findByTechnologyName(technologyName);
     }
+
+    @Override
+    public List<CandidateByTechnologyProjection> findByTechnologyNameAndVersion(String technologyName, String technologyVersion) {
+        return candidateByTechnologyRepository.findByTechnologyNameAndVersion(technologyName, technologyVersion);
+    }
+
 
 }

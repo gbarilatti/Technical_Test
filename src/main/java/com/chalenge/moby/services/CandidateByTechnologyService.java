@@ -12,8 +12,12 @@ public interface CandidateByTechnologyService {
     void create(CandidateByTechnologyDto candidateByTechnologyDto);
 
     void uploadCandidateByTechnology(CandidateByTechnologyDto candidateByTechnologyDto);
+
     CandidateByTechnology findById(Long candidateByTechnologyId);
 
     List<CandidateByTechnologyProjection> findByTechnologyName(String technologyName);
+
+    List<CandidateByTechnologyProjection> findByTechnologyNameAndVersion(String technologyName, String technologyVersion);
+
 
 }
