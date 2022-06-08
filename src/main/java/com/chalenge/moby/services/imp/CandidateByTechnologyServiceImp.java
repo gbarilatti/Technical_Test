@@ -1,4 +1,4 @@
-package com.chalenge.moby.services.imp.imp;
+package com.chalenge.moby.services.imp;
 
 import com.chalenge.moby.exceptions.CandidateAlreadyExistsException;
 import com.chalenge.moby.exceptions.TechnologyNotFoundException;
@@ -8,7 +8,7 @@ import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
 import com.chalenge.moby.projections.CandidateByTechnologyProjection;
 import com.chalenge.moby.repositories.CandidateByTechnologyRepository;
-import com.chalenge.moby.services.imp.CandidateByTechnologyService;
+import com.chalenge.moby.services.CandidateByTechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +27,12 @@ public class CandidateByTechnologyServiceImp implements CandidateByTechnologySer
     }
 
     @Override
-    public void create(CandidateByTechnologyDto candidateByTechnologyDto) {
-        uploadCandidateByTechnology(candidateByTechnologyDto);
+    public Boolean create(CandidateByTechnologyDto candidateByTechnologyDto) {
+        return uploadCandidateByTechnology(candidateByTechnologyDto);
     }
 
     @Override
-    public void uploadCandidateByTechnology(CandidateByTechnologyDto candidateByTechnologyDto) {
+    public Boolean uploadCandidateByTechnology(CandidateByTechnologyDto candidateByTechnologyDto) {
         if (candidateByTechnologyRepository.findByCandidateIdAndTechnologyId(candidateByTechnologyDto.getCandidate().getId(), candidateByTechnologyDto.getTechnology().getId()) != null) {
             throw new CandidateAlreadyExistsException("Already exists");
         } else {
@@ -57,6 +57,7 @@ public class CandidateByTechnologyServiceImp implements CandidateByTechnologySer
                             .build()
             );
         }
+        return true;
     }
 
     @Override

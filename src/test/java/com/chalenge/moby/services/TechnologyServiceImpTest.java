@@ -1,11 +1,11 @@
-package com.chalenge.moby.services.imp;
+package com.chalenge.moby.services;
 
 import com.chalenge.moby.exceptions.TechnologyAlreadyExistsException;
 import com.chalenge.moby.exceptions.TechnologyNotFoundException;
 import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.TechnologyDto;
 import com.chalenge.moby.repositories.TechnologyRepository;
-import com.chalenge.moby.services.imp.imp.TechnologyServiceImp;
+import com.chalenge.moby.services.imp.TechnologyServiceImp;
 import static com.chalenge.moby.utils.TestUtils.getTechnology;
 import static com.chalenge.moby.utils.TestUtils.getTechnologyDto;
 import static org.junit.jupiter.api.Assertions.*;

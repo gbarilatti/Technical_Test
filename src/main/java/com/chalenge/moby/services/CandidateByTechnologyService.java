@@ -1,4 +1,4 @@
-package com.chalenge.moby.services.imp;
+package com.chalenge.moby.services;
 
 import com.chalenge.moby.models.entities.CandidateByTechnology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
@@ -9,9 +9,9 @@ import java.util.List;
 public interface CandidateByTechnologyService {
     List<CandidateByTechnology> findAll();
 
-    void create(CandidateByTechnologyDto candidateByTechnologyDto);
+    Boolean create(CandidateByTechnologyDto candidateByTechnologyDto);
 
-    void uploadCandidateByTechnology(CandidateByTechnologyDto candidateByTechnologyDto);
+    Boolean uploadCandidateByTechnology(CandidateByTechnologyDto candidateByTechnologyDto);
 
     CandidateByTechnology findById(Long candidateByTechnologyId);
 

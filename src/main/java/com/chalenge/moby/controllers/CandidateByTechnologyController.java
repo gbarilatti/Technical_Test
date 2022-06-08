@@ -3,7 +3,7 @@ package com.chalenge.moby.controllers;
 import com.chalenge.moby.models.entities.CandidateByTechnology;
 import com.chalenge.moby.models.views.CandidateByTechnologyDto;
 import com.chalenge.moby.projections.CandidateByTechnologyProjection;
-import com.chalenge.moby.services.imp.CandidateByTechnologyService;
+import com.chalenge.moby.services.CandidateByTechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +30,9 @@ public class CandidateByTechnologyController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<HttpStatus> create(@RequestBody CandidateByTechnologyDto candidateByTechnologyDto) {
-        candidateByTechnologyService.create(candidateByTechnologyDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Boolean> create(@RequestBody CandidateByTechnologyDto candidateByTechnologyDto) {
+
+        return new ResponseEntity<>(candidateByTechnologyService.create(candidateByTechnologyDto), HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{candidateByTechnologyId}")

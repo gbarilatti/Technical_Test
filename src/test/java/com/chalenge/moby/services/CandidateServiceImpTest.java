@@ -1,4 +1,4 @@
-package com.chalenge.moby.services.imp;
+package com.chalenge.moby.services;
 
 import com.chalenge.moby.exceptions.CandidateAlreadyExistsException;
 import com.chalenge.moby.exceptions.CandidateNotExistsException;
@@ -6,7 +6,7 @@ import com.chalenge.moby.models.entities.Candidate;
 import com.chalenge.moby.models.views.CandidateDto;
 import com.chalenge.moby.repositories.CandidateRepository;
 
-import com.chalenge.moby.services.imp.imp.CandidateServiceImp;
+import com.chalenge.moby.services.imp.CandidateServiceImp;
 import static com.chalenge.moby.utils.TestUtils.getCandidate;
 import static com.chalenge.moby.utils.TestUtils.getCandidateDto;
 import static com.chalenge.moby.utils.TestUtils.getCandidateList;

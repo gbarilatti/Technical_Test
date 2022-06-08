@@ -1,11 +1,11 @@
-package com.chalenge.moby.services.imp.imp;
+package com.chalenge.moby.services.imp;
 
 import com.chalenge.moby.exceptions.CandidateAlreadyExistsException;
 import com.chalenge.moby.exceptions.CandidateNotExistsException;
 import com.chalenge.moby.models.entities.Candidate;
 import com.chalenge.moby.models.views.CandidateDto;
 import com.chalenge.moby.repositories.CandidateRepository;
-import com.chalenge.moby.services.imp.CandidateService;
+import com.chalenge.moby.services.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

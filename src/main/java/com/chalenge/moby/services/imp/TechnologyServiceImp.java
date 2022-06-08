@@ -1,11 +1,11 @@
-package com.chalenge.moby.services.imp.imp;
+package com.chalenge.moby.services.imp;
 
 import com.chalenge.moby.exceptions.TechnologyAlreadyExistsException;
 import com.chalenge.moby.exceptions.TechnologyNotFoundException;
 import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.TechnologyDto;
 import com.chalenge.moby.repositories.TechnologyRepository;
-import com.chalenge.moby.services.imp.TechnologyService;
+import com.chalenge.moby.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

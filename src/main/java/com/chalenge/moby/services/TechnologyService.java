@@ -1,4 +1,4 @@
-package com.chalenge.moby.services.imp;
+package com.chalenge.moby.services;
 
 import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.TechnologyDto;

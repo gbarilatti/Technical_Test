@@ -2,7 +2,7 @@ package com.chalenge.moby.controllers;
 
 import com.chalenge.moby.models.entities.Technology;
 import com.chalenge.moby.models.views.TechnologyDto;
-import com.chalenge.moby.services.imp.TechnologyService;
+import com.chalenge.moby.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

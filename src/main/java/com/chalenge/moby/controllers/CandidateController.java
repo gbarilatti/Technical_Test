@@ -2,7 +2,7 @@ package com.chalenge.moby.controllers;
 
 import com.chalenge.moby.models.entities.Candidate;
 import com.chalenge.moby.models.views.CandidateDto;
-import com.chalenge.moby.services.imp.CandidateService;
+import com.chalenge.moby.services.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

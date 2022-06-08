@@ -1,4 +1,4 @@
-package com.chalenge.moby.services.imp;
+package com.chalenge.moby.services;
 
 import com.chalenge.moby.models.entities.Candidate;
 import com.chalenge.moby.models.enums.DocumentType;
