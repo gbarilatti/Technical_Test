@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     @Query(value = FIND_CANDIDATE_BY_DOCUMENT, nativeQuery = true)
     Candidate findByDocument(String candidateDocument);
-
 }

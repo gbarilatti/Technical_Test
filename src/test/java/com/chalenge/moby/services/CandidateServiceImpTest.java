@@ -63,7 +63,7 @@ class CandidateServiceImpTest extends AbstractMvcTestServices {
     @Nested
     class FindByDocumentTest {
         @Test
-        void findByDocument() {
+        void findByDocumentTest() {
             Candidate candidate = getCandidate();
             when(candidateRepository.findByDocument(candidate.getDocument())).thenReturn(candidate);
             assertEquals(candidateServiceImp.findByDocument(candidate.getDocument()),candidate);

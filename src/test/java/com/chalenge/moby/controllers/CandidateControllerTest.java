@@ -9,8 +9,10 @@ import static com.chalenge.moby.utils.TestUtils.getCandidateDto;
 import static com.chalenge.moby.utils.TestUtils.getCandidateList;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import org.mockito.Mock;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -60,12 +62,16 @@ class CandidateControllerTest extends AbstractMVCTest {
     }
 
     @Test
-    void deleteByIdTest() throws Exception{
-        mockMvc.perform(delete("/api/candidate/delete/{candidateId}", getCandidate().getId()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isAccepted());
+    void deleteByIdTest() throws Exception {
+        Candidate candidate = getCandidate();
+        when(candidateRepository.findById(getCandidate().getId())).thenReturn(Optional.ofNullable(candidate));
+        mockMvc.perform(delete("/api/candidate/delete/1")).andExpect(status().isNotFound());
     }
 
     @Test
     void findByDocument() throws Exception {
-        mockMvc.perform(get("/api/candidate/findByDocument/{candidateDocument}",getCandidate().getDocument())).andExpect(MockMvcResultMatchers.status().isOk());
+        Candidate candidate = getCandidate();
+        when(candidateService.findByDocument(getCandidate().getDocument())).thenReturn(candidate);
+        mockMvc.perform(get("/api/candidate/findByDocument/1523564")).andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 }
