@@ -21,7 +21,7 @@ public class TestUtils {
                 .lastName("perez")
                 .documentType(DocumentType.DNI)
                 .document("1523564")
-                .birthday(LocalDate.now())
+                .birthday(null)
                 .build();
     }
 
@@ -38,7 +38,7 @@ public class TestUtils {
                 .lastName("perez")
                 .documentType(DocumentType.DNI)
                 .document("1523564")
-                .birthday(LocalDate.now())
+                .birthday(null)
                 .build();
     }
 
